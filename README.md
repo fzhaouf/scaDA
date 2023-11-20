@@ -3,10 +3,6 @@
 
 # scaDA
 
-<!-- badges: start -->
-<!-- badges: end -->
-
-<<<<<<< HEAD
 Single-cell ATAC-seq sequencing data (scATAC-seq) has been a widely
 adopted technology to investigate chromatin accessibility on the
 single-cell level. Analyzing scATAC-seq can provide valuable insights
@@ -28,9 +24,6 @@ stabilize the parameter estimation by leveraging information from other
 accessible chromatin regions in the genome. Consequently, we performed
 both simulation studies and real data applications, which demonstrate
 the superiority of scaDA compared to existing approaches.
-=======
-The goal of scaDA is to …
->>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406
 
 ## Installation
 
@@ -48,10 +41,6 @@ This is a basic example which shows you how to solve a common problem:
 
 ``` r
 library(scaDA)
-<<<<<<< HEAD
-=======
-## basic example code
->>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406
 ```
 
 What is special about using `README.Rmd` instead of just `README.md`?
