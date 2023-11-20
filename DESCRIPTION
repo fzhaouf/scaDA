@@ -16,12 +16,5 @@ Imports:
     methods,
     progress,
     pscl,
-<<<<<<< HEAD
     Seurat,
     stats
-Depends: 
-    R (>= 2.10)
-LazyData: true
-=======
-    stats
->>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406

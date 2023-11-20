@@ -2,11 +2,8 @@
 #'
 #' @param object scaDAdataset object
 #'
-<<<<<<< HEAD
 #' @return scaDAdataset object
-=======
 #' @return
->>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406
 #' @export
 #' @importFrom stats optimise pchisq p.adjust
 #' @importFrom progress progress_bar
