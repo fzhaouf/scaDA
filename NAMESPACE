@@ -4,7 +4,10 @@ export(estParams)
 export(optParams)
 export(scaDAdatasetFromMatrix)
 export(shrinkDisp)
+<<<<<<< HEAD
 import(Seurat)
+=======
+>>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406
 import(methods)
 importFrom(progress,progress_bar)
 importFrom(stats,IQR)

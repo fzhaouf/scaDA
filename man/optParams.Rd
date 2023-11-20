@@ -9,9 +9,12 @@ optParams(object)
 \arguments{
 \item{object}{scaDAdataset object}
 }
+<<<<<<< HEAD
 \value{
 scaDAdataset object
 }
+=======
+>>>>>>> a03dfd55acdc9b6e8f98bf836fdd0a1457b02406
 \description{
 Title
 }
