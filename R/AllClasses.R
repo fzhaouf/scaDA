@@ -1,4 +1,4 @@
-# AllClasses.R
+# define S4 object class for scaDA
 
 #' S4 class for storing scaDA dataset
 #'

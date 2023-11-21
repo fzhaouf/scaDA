@@ -1,4 +1,4 @@
-#' Title
+#' optimization of mu and phi parameters
 #'
 #' @param object scaDAdataset object
 #'

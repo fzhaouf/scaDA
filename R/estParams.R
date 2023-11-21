@@ -1,4 +1,4 @@
-#' Title
+#' estimating ZINB parameters
 #'
 #' @param object scaDAdataset object
 #' @param celltype1 control cell types

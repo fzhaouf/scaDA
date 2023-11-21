@@ -1,4 +1,4 @@
-#' Title
+#' shrinking dispersion
 #'
 #' @param object scaDAdataset object
 #'
