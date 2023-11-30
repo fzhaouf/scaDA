@@ -10,7 +10,8 @@
 #' @importFrom progress progress_bar
 #'
 #' @examples
-estParams <- function(object, celltype1, celltype2){
+estParams <- function(object, celltype2){
+  message("start initial parameter estiamte")
 
   count = object@count
   # normlaization factor
@@ -52,6 +53,8 @@ estParams <- function(object, celltype1, celltype2){
     format = "  [:bar] :percent :elapsedfull",
     total = npeak, clear = FALSE, width = 60
   )
+
+  suppressWarnings({
 
   for (i in 1:npeak){
 
@@ -133,6 +136,7 @@ estParams <- function(object, celltype1, celltype2){
   object@params = list(c1 = celltype1.loc,c2 = celltype2.loc,
                        param_pooled = est_params_pooled,param_c1 = est_params_cell1,param_c2 = est_params_cell2)
   return(object)
+  })
 }
 
 

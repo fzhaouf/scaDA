@@ -2,7 +2,7 @@
 % Please edit documentation in R/estParams.R
 \name{estParams}
 \alias{estParams}
-\title{Title}
+\title{estimating ZINB parameters}
 \usage{
 estParams(object, celltype1, celltype2)
 }
@@ -17,5 +17,5 @@ estParams(object, celltype1, celltype2)
 a scaDAdataset object contains parameter estimates in params slot
 }
 \description{
-Title
+estimating ZINB parameters
 }

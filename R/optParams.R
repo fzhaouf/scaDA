@@ -24,10 +24,12 @@ optParams <- function(object){ ## output phi is dispersion
   cond2Col = c((nsam1+1):nsam)
 
   tol = 1e-3
-  nitr = 100
+  nitr = 10
 
   total_iterations <- npeak*3
   pb <- progress::progress_bar$new(total = total_iterations, clear = FALSE)
+
+  suppressWarnings({
 
   #opt mu and prev for cond1
   est_params_cell1 = data.frame(object@params$param_c1)
@@ -129,6 +131,7 @@ optParams <- function(object){ ## output phi is dispersion
                        param_pooled = est_params_pooled,param_c1 = est_params_cell1,param_c2 = est_params_cell2)
 
   return(object)
+  })
 }
 
 

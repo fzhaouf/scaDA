@@ -77,4 +77,9 @@ penalized_likelihood_lognormal <- function(params, log_data) {
   return(-ll)  # Negative because most optimizers minimize
 }
 
+#### two kind of tasks: normal sample - human brain; disease sample - AD dataset
+
+
+
+
 

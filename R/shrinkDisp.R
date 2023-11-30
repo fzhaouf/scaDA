@@ -10,6 +10,8 @@
 #' @examples
 shrinkDisp <- function(object){ #output phi is dispersion!!
 
+  message("start shrink dispersion parameter")
+
   count = object@count
   celltype1.loc = object@params$c1  # assuming c1 is reference
   celltype2.loc = object@params$c2
@@ -24,6 +26,8 @@ shrinkDisp <- function(object){ #output phi is dispersion!!
 
   total_iterations <- npeak*3
   pb <- progress::progress_bar$new(total = total_iterations, clear = FALSE)
+
+  suppressWarnings({
 
   #shrink phi for pooled data
   est_params_pooled = data.frame(object@params$param_pooled)
@@ -72,7 +76,7 @@ shrinkDisp <- function(object){ #output phi is dispersion!!
     counts = dat[i,cond2Col]
     prev = est_params_cell2[i,]$p0
     nb_mu = est_params_cell2[i,]$mu
-    phimax = optimise(posterior.phi,c(0.01,max.val),tol=0.00001,maximum = TRUE, counts=counts,p=prev,u=nb_mu,m=m,tao=tao)
+    phimax = suppressWarnings({optimise(posterior.phi,c(0.01,max.val),tol=0.00001,maximum = TRUE, counts=counts,p=prev,u=nb_mu,m=m,tao=tao)})
     phimax = phimax$maximum
     phi_shrink_cond2 = c(phi_shrink_cond2,phimax)
     pb$tick()
@@ -83,6 +87,7 @@ shrinkDisp <- function(object){ #output phi is dispersion!!
                        param_pooled = est_params_pooled,param_c1 = est_params_cell1,param_c2 = est_params_cell2)
 
   return(object)
+  })
 }
 
 

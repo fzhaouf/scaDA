@@ -2,7 +2,7 @@
 % Please edit documentation in R/shrinkDisp.R
 \name{shrinkDisp}
 \alias{shrinkDisp}
-\title{Title}
+\title{shrinking dispersion}
 \usage{
 shrinkDisp(object)
 }
@@ -13,5 +13,5 @@ shrinkDisp(object)
 scaDAdataset object containing shrinked dispersion estimates
 }
 \description{
-Title
+shrinking dispersion
 }

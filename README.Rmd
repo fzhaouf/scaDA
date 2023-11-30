@@ -27,24 +27,45 @@ devtools::install_github("fzhaouf/scaDA")
 
 ## Example
 
-This is a basic example which shows you how to solve a common problem:
+Two example datasets are included in the package to illustrate the application of scaDA. 
+The first dataset, Human Brain, exemplify how scaDA identifies DA regions across various cell
+type from normal samples. The AD dataset showcases the method's capability to determine DA regions 
+within the same cell type under distinct states or conditions.
 
-```{r example}
+# Human Brain
+```{r, warning=FALSE, message=FALSE}
 library(scaDA)
+data("Hbrain", package = "scaDA") # load human brain dataset
+```
+The cell type composition is shown as following and we choose "RORB ESR1" as interested cell type for demontration.
+
+| cell type | cell size | prop |
+|---------|---------|---------|
+| Inh L4-6 SST B3GAT2| 533| 0.188|
+| Exc L5-6 RORB TTC12| 502| 0.177|
+| Exc L5-6 FEZF2 ABO| 418| 0.147|
+| Exc L5-6 FEZF2 EFTUD1P1| 350| 0.123|
+| Exc L3-5 RORB ESR1| 204| 0.072|
+| Exc L4-5 RORB FOLH1B| 144| 0.051|
+| Inh L1-4 LAMP5 LCP2| 121| 0.042|
+| Exc L5-6 THEMIS C1QL3|105|0.037|
+| Inh L2-3 VIP CASC6|105|0.037|
+| Exc L4-6 RORB SEMA3E|100|0.035|
+
+# construct scaDAdataset object
+```{r,warning=FALSE, message=FALSE}
+counts = Hbrain@assays$ATAC@counts
+coldata = Hbrain@meta.data$celltype
+scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
 ```
 
-What is special about using `README.Rmd` instead of just `README.md`? You can include R chunks like so:
-
-```{r cars}
-summary(cars)
+# DA analysis pipeline
+```{r,warning=FALSE, message=FALSE}
+scaDA.obj <- estParams(scaDA.obj,celltype2 = "Inh L1-4 LAMP5 LCP2")
+scaDA.obj <- shrinkDisp(scaDA.obj)
+scaDA.obj <- optParams(scaDA.obj)
+# report results in a dataframe
+result = scaDA.obj@params$result
+print(result[c(1:10),])
 ```
 
-You'll still need to render `README.Rmd` regularly, to keep `README.md` up-to-date. `devtools::build_readme()` is handy for this. You could also use GitHub Actions to re-render `README.Rmd` every time you push. An example workflow can be found here: <https://github.com/r-lib/actions/tree/v1/examples>.
-
-You can also embed plots, for example:
-
-```{r pressure, echo = FALSE}
-plot(pressure)
-```
-
-In that case, don't forget to commit and push the resulting figure files, so they display on GitHub and CRAN.

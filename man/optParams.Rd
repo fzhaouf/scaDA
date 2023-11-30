@@ -2,7 +2,7 @@
 % Please edit documentation in R/optParams.R
 \name{optParams}
 \alias{optParams}
-\title{Title}
+\title{optimization of mu and phi parameters}
 \usage{
 optParams(object)
 }
@@ -13,5 +13,5 @@ optParams(object)
 scaDAdataset object
 }
 \description{
-Title
+optimization of mu and phi parameters
 }
