@@ -44,7 +44,7 @@ samples. The AD dataset showcases the method’s capability to determine
 DA regions within the same cell type under distinct states or
 conditions.
 
-## Human Brain
+### Human Brain
 
 ``` r
 library(scaDA)
@@ -67,7 +67,7 @@ LAMP5 LCP2” as interested cell type for demonstration purpose.
 | Inh L2-3 VIP CASC6      | 105       | 0.037 |
 | Exc L4-6 RORB SEMA3E    | 100       | 0.035 |
 
-### construct scaDAdataset object
+#### construct scaDAdataset object
 
 ``` r
 counts = Hbrain@assays$ATAC@counts
@@ -75,7 +75,7 @@ coldata = Hbrain@meta.data$celltype
 scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
 ```
 
-### DA analysis pipeline
+#### DA analysis pipeline
 
 ``` r
 scaDA.obj <- estParams(scaDA.obj,celltype2 = "Inh L1-4 LAMP5 LCP2")
@@ -88,24 +88,26 @@ scaDA.obj <- optParams(scaDA.obj)
 result = scaDA.obj@params$result
 print(result[c(1:10),])
 #>       tstats         pval          FDR     log2fc
-#> 1  12.632121 5.503633e-03 6.559754e-03  0.4342312
-#> 2  26.526469 7.398835e-06 7.325579e-05  0.7617422
-#> 3  23.193007 3.680974e-05 2.140101e-04  0.7890129
-#> 4  20.563211 1.297178e-04 4.253043e-04  0.2266587
-#> 5  14.107776 2.762062e-03 3.682749e-03 -0.4148302
-#> 6  21.069656 1.018271e-04 3.729931e-04 -0.9164067
-#> 7  11.079882 1.130167e-02 1.227109e-02 -0.8050025
-#> 8  11.890630 7.767362e-03 8.856133e-03 -0.2992331
-#> 9  14.822391 1.974894e-03 2.851427e-03 -0.1565791
-#> 10  4.891154 1.799431e-01 1.801232e-01  0.2184074
+#> 1  22.215805 5.882247e-05 0.0003001146  0.7336385
+#> 2  23.821714 2.721499e-05 0.0001755806  0.7841482
+#> 3  20.962088 1.072021e-04 0.0004305305  0.2124737
+#> 4   8.949328 2.997224e-02 0.0316831263  0.2123390
+#> 5  12.593176 5.604318e-03 0.0070967017 -0.4007064
+#> 6  20.519291 1.324684e-04 0.0004987510 -0.9389558
+#> 7  15.590417 1.375691e-03 0.0022928178 -1.4311649
+#> 8  18.136637 4.122105e-04 0.0009699070 -0.5684360
+#> 9  13.825139 3.153093e-03 0.0043671653 -0.2941101
+#> 10  5.427206 1.430579e-01 0.1434884022  0.2183336
 ```
 
-## Alzheimer’s disease dataset
+### Alzheimer’s disease dataset
 
 The included example dataset is for determining DA regions within the
 same cell type under distinct states or conditions. This dataset
 contains 3 batches of Normal/AD samples and for each sample sequencing
-data is available for 6 cell types: ASC, EX, IHN, MG, ODC, OPC.
+data is available for 6 cell types: ASC, EX, IHN, MG, ODC, OPC. For
+demonstration purpose, we use MG cell type from “Sample-100” of controls
+and “Sample-43” of ADs.
 
 | Batch |            | Control   |
 |-------|------------|-----------|
@@ -121,9 +123,6 @@ data is available for 6 cell types: ASC, EX, IHN, MG, ODC, OPC.
 | B3    | sample-58  | sample-47 |
 | B3    | \\         | sample-17 |
 | B3    | \\         | sample-19 |
-
-For demonstration purpose, we use MG cell type from “Sample-100” of
-controls and “Sample-43” of ADs.
 
 ``` r
 data("ADdata", package = "scaDA") # load AD dataset

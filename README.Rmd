@@ -32,7 +32,7 @@ The first dataset, Human Brain, exemplify how scaDA identifies DA regions across
 type from normal samples. The AD dataset showcases the method's capability to determine DA regions 
 within the same cell type under distinct states or conditions.
 
-## Human Brain
+### Human Brain
 ```{r, warning=FALSE, message=TRUE}
 library(scaDA)
 data("Hbrain", package = "scaDA") # load human brain dataset
@@ -52,14 +52,14 @@ The cell type composition is shown as following and we choose "Inh L1-4 LAMP5 LC
 | Inh L2-3 VIP CASC6|105|0.037|
 | Exc L4-6 RORB SEMA3E|100|0.035|
 
-### construct scaDAdataset object
+#### construct scaDAdataset object
 ```{r,warning=FALSE, message=TRUE}
 counts = Hbrain@assays$ATAC@counts
 coldata = Hbrain@meta.data$celltype
 scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
 ```
 
-### DA analysis pipeline
+#### DA analysis pipeline
 ```{r,warning=FALSE, message=TRUE}
 scaDA.obj <- estParams(scaDA.obj,celltype2 = "Inh L1-4 LAMP5 LCP2")
 scaDA.obj <- shrinkDisp(scaDA.obj)
@@ -68,8 +68,8 @@ scaDA.obj <- optParams(scaDA.obj)
 result = scaDA.obj@params$result
 print(result[c(1:10),])
 ```
-## Alzheimer's disease dataset
-The included example dataset is for determining DA regions within the same cell type under distinct states or conditions. This dataset contains 3 batches of Normal/AD samples and for each sample sequencing data is available for 6 cell types: ASC, EX, IHN, MG, ODC, OPC.
+### Alzheimer's disease dataset
+The included example dataset is for determining DA regions within the same cell type under distinct states or conditions. This dataset contains 3 batches of Normal/AD samples and for each sample sequencing data is available for 6 cell types: ASC, EX, IHN, MG, ODC, OPC. For demonstration purpose, we use MG cell type from "Sample-100" of controls and "Sample-43" of ADs.
 
 | Batch |  | Control | Case |
 |---------|---------|---------|
@@ -85,8 +85,6 @@ The included example dataset is for determining DA regions within the same cell 
 | B3 | sample-58 | sample-47 |
 | B3 | \ | sample-17 |
 | B3 | \ | sample-19 |
-
-For demonstration purpose, we use MG cell type from "Sample-100" of controls and "Sample-43" of ADs.
 
 ```{r,warning=FALSE, message=TRUE}
 data("ADdata", package = "scaDA") # load AD dataset
