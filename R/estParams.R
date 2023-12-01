@@ -1,8 +1,7 @@
 #' estimating ZINB parameters
 #'
 #' @param object scaDAdataset object
-#' @param celltype1 control cell types
-#' @param celltype2 case cell types
+#' @param celltype2 cell type of interest
 #'
 #' @return a scaDAdataset object contains parameter estimates in params slot
 #' @export

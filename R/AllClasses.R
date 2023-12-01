@@ -15,7 +15,9 @@ setClass("scaDAdataset",
            params = "list"
          ),
          prototype = list(
-           params = list()
+           count = matrix(numeric(0), nrow = 0, ncol = 0),  # Default empty matrix
+           colData = data.frame(),  # Default empty data frame
+           params = list()         # Default empty list
          )
 )
 
