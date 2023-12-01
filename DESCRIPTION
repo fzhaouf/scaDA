@@ -2,7 +2,7 @@ Package: scaDA
 Title: R package for Differential Analysis of Single-Cell Chromatin Accessibility Sequencing Data
 Version: 0.0.0.9000
 Authors@R: 
-    person("Fengdi", "Zhao", , "fengdizhao@ufl.edu", role = c("aut", "cre"),
+    person("Fengdi", "Zhao", , email = "fengdizhao@ufl.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-8754-7955"))
 Description: scATAC-seq has been a widely adopted technology to investigate chromatin accessibility on the single-cell level. Analyzing scATAC-seq can provide valuable insights into identifying cell populations and revealing the epigenetic heterogeneity across cell populations in different biological contexts. One important aspect of scATAC-seq data analysis is performing differential chromatin accessibility (DA) analysis, which will help identify cell populations and reveal epigenetic heterogeneity. While numerous differential expression methods have been proposed for single-cell RNA sequencing data, DA methods for scATAC-seq data are underdeveloped and remain a major challenge due to the high sparsity and high dimensionality of the data. To fill the gap, we introduce a novel and robust zero-inflated negative binomial framework named scaDA for DA analysis. The model links the prevalence, mean and dispersion parameters to covariates such as cell populations, treatment conditions, and batch effect. The statistical inference is based on the EM algorithm and the dispersion parameter is shrunk using an empirical Bayes method to stabilize the parameter estimation by leveraging information from other accessible chromatin regions in the genome. Consequently, we performed both simulation studies and real data applications, which demonstrate the superiority of scaDA compared to existing approaches.
 License: MIT + file LICENSE
@@ -21,3 +21,5 @@ Imports:
 Depends: 
     R (>= 2.10)
 LazyData: true
+URL: https://github.com/fzhaouf/scaDA
+    
