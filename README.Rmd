@@ -24,11 +24,11 @@ You can install scaDA from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("fzhaouf/scaDA")
 ```
-or from CRAN:
+<!-- or from CRAN: -->
 
-``` r
-install.packages('scaDA')
-```
+<!-- ``` r -->
+<!-- install.packages('scaDA') -->
+<!-- ``` -->
 
 # Examples
 
