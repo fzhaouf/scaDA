@@ -35,7 +35,7 @@ optParamsParallel <- function(object) {
   # Setting up parallel backend
   no_cores <- parallel::detectCores() - 1
   cl <- parallel::makeCluster(no_cores)
-  parallel::clusterExport(cl, c("dat", "cond1Col", "cond2Col", "nitr", "tol", "est_params_cell1", "est_params_cell2", "zinb.loglink"))
+  parallel::clusterExport(cl, c("dat", "cond1Col", "cond2Col", "nitr", "tol", "est_params_cell1", "est_params_cell2", "zinb.loglink"),envir = environment())
   # Parallelize the loop for condition 1
   # Parallelize optimization for condition 1
   results_c1 <- parallel::parLapply(cl, 1:npeak, function(i) {

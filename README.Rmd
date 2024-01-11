@@ -66,7 +66,7 @@ scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.fr
 
 ### DA analysis pipeline
 
-Specify the group.1 parameter in "estParams" function to interested cell type and omitt the group.2 parameter or set it to NULL.
+Specify the group.1 parameter in "estParams" function to interested cell type and omit the group.2 parameter or set it to NULL.
 
 ```{r,warning=FALSE, message=TRUE}
 scaDA.obj <- estParams(scaDA.obj, group.1 = "microglia")
@@ -85,14 +85,32 @@ Specify both group.1 and group.2 parameters in "estParams" function to intereste
 
 counts = HumanBrain@assays$ATAC@counts
 coldata = HumanBrain@meta.data$celltype
-scaDA.obj.2c <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
-scaDA.obj.2c <- estParams(scaDA.obj.2c, group.1 = "microglia", group.2 = "astrocytes")
-scaDA.obj.2c <- shrinkDisp(scaDA.obj.2c)
-scaDA.obj.2c <- optParams(scaDA.obj.2c)
+scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
+scaDA.obj <- estParams(scaDA.obj, group.1 = "microglia", group.2 = "astrocytes")
+scaDA.obj <- shrinkDisp(scaDA.obj)
+scaDA.obj <- optParams(scaDA.obj)
 # report results in a dataframe
-results2 = scaDA.obj.2c@result
+results2 = scaDA.obj@result
 print(results2[c(1:10),])
 
 ```
+
+## ver-1.0.1 update: add optParamsParallel
+There is a parallel version based on R "parallel" library that significantly speeds up the final optimization process. 
+
+```{r,warning=FALSE, message=TRUE}
+
+counts = HumanBrain@assays$ATAC@counts
+coldata = HumanBrain@meta.data$celltype
+scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.frame(coldata))
+scaDA.obj <- estParams(scaDA.obj, group.1 = "microglia", group.2 = "astrocytes")
+scaDA.obj <- shrinkDisp(scaDA.obj)
+scaDA.obj <- optParamsParallel(scaDA.obj)
+# report results in a dataframe
+results3 = scaDA.obj@result
+print(results2[c(1:10),])
+```
+
+
 
 

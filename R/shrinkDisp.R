@@ -73,7 +73,7 @@ shrinkDisp <- function(object){ #output phi is dispersion!
     counts <- dat[i,cond2Col]
     prev <- est_params_cell2[i,]$p0
     nb_mu <- est_params_cell2[i,]$mu
-    phimax <- suppressWarnings({optimise(posterior.phi,c(0.01,max.val),tol=0.00001,maximum = TRUE, counts=counts,p=prev,u=nb_mu,m=m,tao=tao)})
+    phimax <- optimise(posterior.phi,c(0.01,max.val),tol=0.00001,maximum = TRUE, counts=counts,p=prev,u=nb_mu,m=m,tao=tao)
     phimax <- phimax$maximum
     phi_shrink_cond2 <- c(phi_shrink_cond2,phimax)
     pb$tick()

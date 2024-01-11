@@ -1,6 +1,6 @@
 Package: scaDA
 Title: R package for Differential Analysis of Single-Cell Chromatin Accessibility Sequencing Data
-Version: 1.0.0
+Version: 1.0.1
 Authors@R: 
     person("Fengdi", "Zhao", , email = "fengdizhao@ufl.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-8754-7955"))
