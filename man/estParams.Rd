@@ -4,12 +4,14 @@
 \alias{estParams}
 \title{estimating ZINB parameters}
 \usage{
-estParams(object, celltype2)
+estParams(object, group.1 = NULL, group.2 = NULL)
 }
 \arguments{
 \item{object}{scaDAdataset object}
 
-\item{celltype2}{cell type of interest}
+\item{group.1}{cell type 1}
+
+\item{group.2}{cell type 2}
 }
 \value{
 a scaDAdataset object contains parameter estimates in params slot

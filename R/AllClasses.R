@@ -12,12 +12,14 @@ setClass("scaDAdataset",
          slots = list(
            count = "matrix",  # Changed from 'data' to 'count'
            colData = "data.frame",
-           params = "list"
+           params = "list",
+           result = "data.frame"
          ),
          prototype = list(
            count = matrix(numeric(0), nrow = 0, ncol = 0),  # Default empty matrix
            colData = data.frame(),  # Default empty data frame
-           params = list()         # Default empty list
+           params = list(),         # Default empty list
+           result = data.frame()
          )
 )
 
@@ -35,8 +37,6 @@ validity_scaDAdataset <- function(object) {
 }
 
 setValidity("scaDAdataset", validity_scaDAdataset)
-
-
 
 
 #' scaDAdataset object and constructors; currently it need to be created from matrix

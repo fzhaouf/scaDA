@@ -8,7 +8,7 @@
 #'   \item{column2}{Description of column2.}
 #'   \item{...}{...}
 #' }
-#' @name Hbrain
+#' @name HumanBrain
 #' @source 10X Genomics
 #' @import Seurat
-"Hbrain"
+"HumanBrain"
