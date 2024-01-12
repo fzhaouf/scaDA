@@ -113,5 +113,5 @@ scaDA.obj <- shrinkDisp(scaDA.obj)
 scaDA.obj <- optParamsParallel(scaDA.obj)
 # report results in a dataframe
 results3 = scaDA.obj@result
-print(results2[c(1:10),])
+print(results3[c(1:10),])
 ```

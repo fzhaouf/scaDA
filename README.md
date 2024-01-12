@@ -162,7 +162,7 @@ scaDA.obj <- optParamsParallel(scaDA.obj)
 #> start optimize parameter estimates
 # report results in a dataframe
 results3 = scaDA.obj@result
-print(results2[c(1:10),])
+print(results3[c(1:10),])
 #>       tstats         pval          FDR      log2fc
 #> 1  15.829929 1.228754e-03 0.0065797653 -0.01083656
 #> 2  17.223335 6.357910e-04 0.0046408101  1.25667661
