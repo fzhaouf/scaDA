@@ -6,7 +6,6 @@
 #' @export
 #' @importFrom stats optimise pchisq p.adjust
 #' @importFrom progress progress_bar
-#' @examples
 optParams <- function(object){ ## output phi is dispersion
   message("start optimize parameter estimates")
 

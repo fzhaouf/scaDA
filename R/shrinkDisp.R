@@ -6,8 +6,6 @@
 #' @export
 #' @importFrom stats median IQR optimise
 #' @importFrom progress progress_bar
-#'
-#' @examples
 shrinkDisp <- function(object){ #output phi is dispersion!
   message("start shrink dispersion parameter")
 

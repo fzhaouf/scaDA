@@ -14,6 +14,7 @@ knitr::opts_chunk$set(
 ```
 
 # scaDA
+
 Single-cell ATAC-seq sequencing data (scATAC-seq) has been widely used to investigate chromatin accessibility on the single-cell level. One important application of scATAC-seq data analysis is performing differential chromatin accessibility (DA) analysis. The data characteristics of scATAC-seq such as excessive zeros and large variability of chromatin accessibility across cells impose a unique challenge for DA analysis. Existing statistical methods focus on detecting the difference in mean of the chromatin accessible regions and treat the dispersion and prevalence as nuisances. Motivated by real data exploration, where dispersion and prevalence demonstrate distribution differences among cell types, we introduce a novel composite statistical test named “scaDA”, which is based on the zero-inflated negative binomial regression model, for differential distribution analysis of scATAC-seq by jointly testing the abundance, prevalence, and dispersion simultaneously. scaDA further adopts an empirical Bayes shrinkage technique and iterative estimation procedure to refine the estimates for all three parameters.
 
 # Installation
@@ -24,17 +25,20 @@ You can install scaDA from [GitHub](https://github.com/) with:
 # install.packages("devtools")
 devtools::install_github("fzhaouf/scaDA")
 ```
+
 <!-- or from CRAN: -->
 
 <!-- ``` r -->
+
 <!-- install.packages('scaDA') -->
+
 <!-- ``` -->
 
 # Examples
 
 One example datasets are included in the package to illustrate the application of scaDA. To test for DA peaks between two specific groups of cells, please specify the group.1 and group.2 parameters in "estParams" function. If the group.2 parameter is omitted or set to NULL, the pipeline will test for DA peaks between the group specified by group.1 parameter and all other cell types in the dataset. The first example using Human Brain 3K, demonstrates how scaDA perform DA test between interested cell type and all other cells. The second example using the same dataset showcases the method's capability to determine DA regions between two specific groups in the data. The same setting can be used to conduct DA test for same cell type between two distinct conditions (e.g. normal/disease).
 
-## DA test between specific cell type and all other types in Human Brain 3K 
+## DA test between specific cell type and all other types in Human Brain 3K
 
 ```{r, warning=FALSE, message=TRUE}
 library(scaDA)
@@ -43,16 +47,16 @@ data("HumanBrain", package = "scaDA") # load human brain dataset
 
 The cell type composition is shown as following and we choose "microglia" as the interested cell type for demonstration purpose.
 
-| cell type | cell size | Proportion |
-|---------|---------|---------|
-| granule neuron| 636| 22%|
-| oligodendrocyte| 552| 20%|
-| cOPC| 365| 13%|
-| bergmann glia| 344| 12%|
-| ependymal| 204| 7%|
-| purkinje cell| 144| 5%|
-| astrocytes| 125| 4%|
-| microglia|104| 4%|
+| cell type       | cell size | Proportion |
+|-----------------|-----------|------------|
+| granule neuron  | 636       | 22%        |
+| oligodendrocyte | 552       | 20%        |
+| cOPC            | 365       | 13%        |
+| bergmann glia   | 344       | 12%        |
+| ependymal       | 204       | 7%         |
+| purkinje cell   | 144       | 5%         |
+| astrocytes      | 125       | 4%         |
+| microglia       | 104       | 4%         |
 
 ### construct scaDAdataset object
 
@@ -69,7 +73,7 @@ scaDA.obj <- scaDAdatasetFromMatrix(count = as.matrix(counts), colData = data.fr
 Specify the group.1 parameter in "estParams" function to interested cell type and omit the group.2 parameter or set it to NULL.
 
 ```{r,warning=FALSE, message=TRUE}
-scaDA.obj <- estParams(scaDA.obj, group.1 = "microglia")
+scaDA.obj <- estParams(scaDA.obj, group.1 = "microglia")ddd
 scaDA.obj <- shrinkDisp(scaDA.obj)
 scaDA.obj <- optParams(scaDA.obj)
 # report results in a dataframe
@@ -96,7 +100,8 @@ print(results2[c(1:10),])
 ```
 
 ## ver-1.0.1 update: add optParamsParallel
-There is a parallel version based on R "parallel" library that significantly speeds up the final optimization process. 
+
+There is a parallel version based on R "parallel" library that significantly speeds up the final optimization process.
 
 ```{r,warning=FALSE, message=TRUE}
 
@@ -110,7 +115,3 @@ scaDA.obj <- optParamsParallel(scaDA.obj)
 results3 = scaDA.obj@result
 print(results2[c(1:10),])
 ```
-
-
-
-

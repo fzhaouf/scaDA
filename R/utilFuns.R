@@ -1,4 +1,5 @@
 sample.loc <- function(object,group.1,method=c("balanced","unbalanced")){
+  set.seed(0810)
   # for one vs. all other case, use stratified sampling to get balanced sample size
   if(method=="balanced"){
     group.1.loc <- which(object@colData==group.1)

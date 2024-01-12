@@ -3,12 +3,10 @@
 #' @param object scaDAdataset object
 #'
 #' @return scaDAdataset object
-#' @return
 #' @export
 #' @import parallel
 #' @importFrom stats optimise pchisq p.adjust
 #' @importFrom progress progress_bar
-#' @examples
 optParamsParallel <- function(object) {
   message("start optimize parameter estimates")
 

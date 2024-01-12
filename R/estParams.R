@@ -8,8 +8,6 @@
 #' @export
 #' @importFrom stats median plogis pchisq
 #' @importFrom progress progress_bar
-#'
-#' @examples
 estParams <- function(object, group.1=NULL, group.2=NULL){
   message("start initial parameter estiamte")
 

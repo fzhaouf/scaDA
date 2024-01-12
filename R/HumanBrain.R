@@ -11,4 +11,5 @@
 #' @name HumanBrain
 #' @source 10X Genomics
 #' @import Seurat
+#' @import Signac
 "HumanBrain"
