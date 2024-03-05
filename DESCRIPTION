@@ -5,7 +5,7 @@ Authors@R:
     person("Fengdi", "Zhao", , email = "fengdizhao@ufl.edu", role = c("aut", "cre"),
            comment = c(ORCID = "0009-0007-8754-7955"))
 Description: Single-cell ATAC-seq sequencing data (scATAC-seq) has been widely used to investigate chromatin accessibility on the single-cell level. One important application of scATAC-seq data analysis is performing differential chromatin accessibility (DA) analysis. The data characteristics of scATAC-seq such as excessive zeros and large variability of chromatin accessibility across cells impose a unique challenge for DA analysis. Existing statistical methods focus on detecting the difference in mean of the chromatin accessible regions and treat the dispersion and prevalence as nuisances. Motivated by real data exploration, where dispersion and prevalence demonstrate distribution differences among cell types, we introduce a novel composite statistical test named “scaDA”, which is based on the zero-inflated negative binomial regression model, for differential distribution analysis of scATAC-seq by jointly testing the abundance, prevalence, and dispersion simultaneously. scaDA further adopts an empirical Bayes shrinkage technique and iterative estimation procedure to refine the estimates for all three parameters.
-License: MIT + file LICENSE
+License: GPL (>= 3)
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.2.3
