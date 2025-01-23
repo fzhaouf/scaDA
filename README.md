@@ -175,3 +175,33 @@ print(results3[c(1:10),])
 #> 9  15.167677 1.678822e-03 0.0073956904  0.01849312
 #> 10 11.490644 9.348168e-03 0.0180914164 -0.71459130
 ```
+## data processing
+
+The method is based on a ZINB model, and it will not be able to do inference when data contains all zeros for either group. These are considered edge cases and are very few when using on single cell atacseq data. I will put out an update to allow edge cases being handled by wilcoxon test soon. For now you can just filter out such peaks.
+
+``` r
+Step 1: Extract counts and coldata
+counts <- HumanBrain@assays$ATAC@counts
+coldata <- HumanBrain@meta.data$celltype
+
+Step 2: Define your group
+group1_label <- "celltype1"
+group2_label <- "celltype2"
+
+group1_cols <- which(coldata == group1_label)
+group2_cols <- which(coldata == group2_label)
+
+Step 3: Calculate row sums for each group
+row_sums_g1 <- rowSums(counts[, group1_cols, drop = FALSE])
+row_sums_g2 <- rowSums(counts[, group2_cols, drop = FALSE])
+
+Step 4: Identify peaks to remove
+all_zero_both <- (row_sums_g1 == 0) & (row_sums_g2 == 0)
+all_zero_either <- (row_sums_g1 == 0) | (row_sums_g2 == 0)
+
+to_remove <- all_zero_both | all_zero_either
+
+Step 5: Filter peaks
+filtered_counts <- counts[!to_remove, ]
+
+```
