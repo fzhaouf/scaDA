@@ -7,10 +7,11 @@
 #' @import parallel
 #' @importFrom stats optimise pchisq p.adjust
 #' @importFrom progress progress_bar
-optParamsParallel <- function(object) {
+optParamsParallel <- function(object, ncores = NULL) {
   message("start optimize parameter estimates")
 
   count <- object@count
+  peak_names <- rownames(count)  # Preserve peak names
   group.1.loc <- object@params$g1
   group.2.loc <- object@params$g2
 
@@ -31,10 +32,12 @@ optParamsParallel <- function(object) {
   nitr <- 10
 
   # Setting up parallel backend
-  no_cores <- parallel::detectCores() - 1
-  cl <- parallel::makeCluster(no_cores)
+  if (is.null(ncores)) {
+    ncores <- parallel::detectCores() - 2
+  }
+  cl <- parallel::makeCluster(ncores)
   parallel::clusterExport(cl, c("dat", "cond1Col", "cond2Col", "nitr", "tol", "est_params_cell1", "est_params_cell2", "zinb.loglink"),envir = environment())
-  # Parallelize the loop for condition 1
+
   # Parallelize optimization for condition 1
   results_c1 <- parallel::parLapply(cl, 1:npeak, function(i) {
     counts <- dat[i, cond1Col]
@@ -118,7 +121,7 @@ optParamsParallel <- function(object) {
     pval_zinb_shrink_opt <- c(pval_zinb_shrink_opt,pvl)
     tstats <- c(tstats,test.stats)
   }
-  result <- data.frame(tstats=tstats, pval=pval_zinb_shrink_opt)
+  result <- data.frame(peakID=peak_names, tstats=tstats, pval=pval_zinb_shrink_opt)
 
   result$FDR <- p.adjust(result$pval,method='fdr')
   # calculate fold change

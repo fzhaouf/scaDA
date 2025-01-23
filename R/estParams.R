@@ -9,7 +9,7 @@
 #' @importFrom stats median plogis pchisq
 #' @importFrom progress progress_bar
 estParams <- function(object, group.1=NULL, group.2=NULL){
-  message("start initial parameter estiamte")
+  message("start initial parameter estimates")
 
   count <- object@count
   peak_names <- rownames(count)  # Preserve peak names
