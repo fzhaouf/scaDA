@@ -175,7 +175,7 @@ print(results3[c(1:10),])
 #> 9  15.167677 1.678822e-03 0.0073956904  0.01849312
 #> 10 11.490644 9.348168e-03 0.0180914164 -0.71459130
 ```
-## data processing
+## Extra data processing
 
 The method is based on a ZINB model, and it will not be able to do inference when data contains all zeros for either group. These are considered edge cases and are very few when using on single cell atacseq data. I will put out an update to allow edge cases being handled by wilcoxon test soon. For now you can just filter out such peaks.
 
