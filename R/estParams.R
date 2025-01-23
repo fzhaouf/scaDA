@@ -12,6 +12,7 @@ estParams <- function(object, group.1=NULL, group.2=NULL){
   message("start initial parameter estiamte")
 
   count <- object@count
+  peak_names <- rownames(count)  # Preserve peak names
   # normlaization factor
   sfs <- apply(count,2,mean); sfs=sfs/median(sfs)
 
@@ -45,8 +46,11 @@ estParams <- function(object, group.1=NULL, group.2=NULL){
   est_params_cell1 <- matrix(NA,dim(counts_cell1)[1],ncol=3)
   est_params_cell2 <- matrix(NA,dim(counts_cell2)[1],ncol=3)
   colnames(est_params_pooled) <- c("mu","phi","p0")
+  rownames(est_params_pooled) <- peak_names
   colnames(est_params_cell1) <- c("mu","phi","p0")
+  rownames(est_params_cell1) <- peak_names
   colnames(est_params_cell2) <- c("mu","phi","p0")
+  rownames(est_params_cell2) <- peak_names
 
   pval_zinb3p <- NULL
   tstats <- NULL
@@ -121,6 +125,11 @@ estParams <- function(object, group.1=NULL, group.2=NULL){
                         param_pooled = est_params_pooled,
                         param_g1 = est_params_cell1,
                         param_g2 = est_params_cell2)
-  return(object)
+
   })
+
+  return(object)
+
 }
+
+

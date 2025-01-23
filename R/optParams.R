@@ -10,6 +10,7 @@ optParams <- function(object){ ## output phi is dispersion
   message("start optimize parameter estimates")
 
   count <- object@count
+  peak_names <- rownames(count)  # Preserve peak names
   group.1.loc <- object@params$g1  # assuming c1 is reference
   group.2.loc <- object@params$g2
   # subset dat
@@ -115,7 +116,7 @@ optParams <- function(object){ ## output phi is dispersion
     tstats <- c(tstats,test.stats)
     pb$tick()
   }
-  result <- data.frame(tstats=tstats, pval=pval_zinb_shrink_opt)
+  result <- data.frame(peakID=peak_names, tstats=tstats, pval=pval_zinb_shrink_opt)
 
   result$FDR <- p.adjust(result$pval,method='fdr')
   # calculate fold change
